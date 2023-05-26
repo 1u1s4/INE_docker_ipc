@@ -15,6 +15,12 @@ RUN apt-get install -y texlive-xetex
 RUN apt-get update && \
     apt-get install -y python3 python3-pip git
 
+# Instalar libgdal-dev
+RUN apt-get install -y libgdal-dev
+
+# Establecer la versión GDAL
+RUN echo "GDAL_VERSION=$(gdal-config --version)" >> /etc/environment
+
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install git+https://github.com/1u1s4/funcionesjo.git
 RUN pip3 install git+https://github.com/1u1s4/colorimapgt.git
