@@ -1,17 +1,9 @@
-# Empezar desde la última imagen de Ubuntu
-FROM ubuntu:latest
+# Empezar desde la última imagen de OpenJDK 8
+FROM openjdk:8-jdk
 
-# Usar la versión más reciente de R
-FROM r-base:4.0.0
-
-# Instalar Java 8
+# Instalar R base
 RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk && \
-    apt-get clean;
-
-# Configurar el entorno de Java
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-RUN export JAVA_HOME
+    apt-get install -y r-base
 
 # Instalar rtools
 RUN apt-get install -y r-cran-devtools
@@ -26,6 +18,8 @@ RUN apt-get update && \
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install git+https://github.com/1u1s4/funcionesjo.git
 RUN pip3 install git+https://github.com/1u1s4/colorimapgt.git
+
+COPY db_b /app/db_b
 
 # Iniciar una shell Bash
 CMD ["/bin/bash"]
