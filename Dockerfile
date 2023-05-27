@@ -24,8 +24,14 @@ RUN echo "GDAL_VERSION=$(gdal-config --version)" >> /etc/environment
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install git+https://github.com/1u1s4/funcionesjo.git
 RUN pip3 install git+https://github.com/1u1s4/colorimapgt.git
+RUN pip3 install git+https://github.com/1u1s4/reporteine@packing
 
-COPY db_b /app/db_b
+# Incluir la fuente personalizada
+COPY archivos/OpenSans-CondLight.ttf /usr/share/fonts/
+RUN fc-cache -f -v
+
+COPY archivos/db_b /app/db_b
+COPY archivos/mapa_test.py /app/mapa_test.py
 
 # Iniciar una shell Bash
 CMD ["/bin/bash"]
