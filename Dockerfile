@@ -1,9 +1,20 @@
-# Empezar desde la última imagen de OpenJDK 8
-FROM openjdk:8-jdk
+# Empezar desde la última imagen de Ubuntu
+FROM ubuntu:latest
+
+# Actualizar lista de paquetes
+RUN apt-get update
+
+# Instalar OpenJDK 8
+RUN apt-get install -y software-properties-common && \
+    add-apt-repository ppa:openjdk-r/ppa && \
+    apt-get update && \
+    apt-get install -y openjdk-8-jdk
+
+# Configurar DEBIAN_FRONTEND en noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Instalar R base
-RUN apt-get update && \
-    apt-get install -y r-base
+RUN apt-get install -y r-base
 
 # Instalar libssl-dev
 RUN apt-get install -y libssl-dev
@@ -28,8 +39,7 @@ RUN R -e "devtools::install_github('1u1s4/funcionesINE', upgrade='never')"
 RUN apt-get install -y texlive-xetex
 
 # Instalar Python 3, pip y Git
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip git
+RUN apt-get install -y python3 python3-pip git
 
 # Instalar libgdal-dev
 RUN apt-get install -y libgdal-dev
