@@ -1,5 +1,5 @@
 # Imagen base
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Asegúrate de que todo se ejecute en modo noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -29,7 +29,7 @@ RUN R -e "install.packages('rJava', repos='http://cran.rstudio.com/')"
 
 # Instalar paquetes R desde GitHub
 RUN R -e "devtools::install_github('yihui/tikzDevice')"
-RUN R -e "devtools::install_github('1u1s4/funcionesINE', upgrade='never')"
+RUN R -e "devtools::install_github('1u1s4/funcionesINE', upgrade='never', INSTALL_opts = '--no-test-load')"
 
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install \
