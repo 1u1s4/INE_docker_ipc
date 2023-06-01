@@ -7,8 +7,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Actualiza la lista de paquetes
 RUN apt-get update
 
-# Instala OpenJDK 8, Python, pip y las bibliotecas GDAL
-RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev
+# Instala OpenJDK 8, Python, pip, las bibliotecas GDAL y texlive-xetex
+RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev texlive-xetex
 
 # Instala las bibliotecas necesarias para 'devtools'
 RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
@@ -16,16 +16,18 @@ RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfr
 # Establece la versión de Java 
 RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
 
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+
 # Instala R
 RUN apt-get update && apt-get install -y r-base
 
 RUN R CMD javareconf
 
-RUN apt-get install -y git
-
 # Instala los paquetes de devtools y rJava en R
 RUN R -e "install.packages('devtools', repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('rJava', repos='http://cran.rstudio.com/')"
+
+RUN apt-get install -y git
 
 # Instalar paquetes R desde GitHub
 RUN R -e "devtools::install_github('yihui/tikzDevice')"
