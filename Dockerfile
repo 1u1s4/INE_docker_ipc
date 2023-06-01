@@ -1,42 +1,31 @@
-# Empezar desde una imagen específica de Ubuntu
+# Imagen base
 FROM ubuntu:20.04
 
-# Configurar DEBIAN_FRONTEND en noninteractive
-RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+# Asegúrate de que todo se ejecute en modo noninteractive
+ENV DEBIAN_FRONTEND noninteractive
 
-# Actualizar lista de paquetes
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y software-properties-common
+# Actualiza la lista de paquetes
+RUN apt-get update
 
-# Instalar OpenJDK 8
-RUN add-apt-repository ppa:openjdk-r/ppa && \
-    apt-get update && \
-    apt-get install -y openjdk-8-jdk
+# Instala OpenJDK 8, Python, pip y las bibliotecas GDAL
+RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev
 
-# Instalar todas las dependencias necesarias
-RUN apt-get install -y \
-    r-base \
-    r-base-dev \
-    build-essential \
-    fortran77-compiler \
-    libssl-dev \
-    libpcre++-dev \
-    liblzma-dev \
-    texlive-xetex \
-    python3 \
-    python3-pip \
-    git \
-    libgdal-dev && \
-    rm -rf /var/lib/apt/lists/*
+# Instala las bibliotecas necesarias para 'devtools'
+RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
 
-# Establecer la versión GDAL
-RUN echo "GDAL_VERSION=$(gdal-config --version)" >> /etc/environment
+# Establece la versión de Java 
+RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
 
-# Establecer el repositorio de CRAN
-RUN echo 'options(repos = c(CRAN = "https://cran.rstudio.com/"))' >> /usr/lib/R/etc/Rprofile.site
+# Instala R
+RUN apt-get update && apt-get install -y r-base
 
-# Instalar devtools y rJava en R
-RUN R -e "install.packages(c('devtools', 'rJava'))"
+RUN R CMD javareconf
+
+RUN apt-get install -y git
+
+# Instala los paquetes de devtools y rJava en R
+RUN R -e "install.packages('devtools', repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('rJava', repos='http://cran.rstudio.com/')"
 
 # Instalar paquetes R desde GitHub
 RUN R -e "devtools::install_github('yihui/tikzDevice')"
@@ -44,10 +33,10 @@ RUN R -e "devtools::install_github('1u1s4/funcionesINE', upgrade='never')"
 
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install \
-    git+https://github.com/1u1s4/funcionesjo.git \
-    git+https://github.com/1u1s4/colorimapgt.git \
-    git+https://github.com/1u1s4/reporteine@packing \
-    git+https://github.com/1u1s4/ineipc
+    git+https://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@github.com/1u1s4/funcionesjo.git \
+    git+https://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@github.com/1u1s4/colorimapgt.git \
+    git+https://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@github.com/1u1s4/reporteine@packing \
+    git+https://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@github.com/1u1s4/ineipc
 
 # Incluir la fuente personalizada
 COPY archivos/OpenSans-CondLight.ttf /usr/share/fonts/
