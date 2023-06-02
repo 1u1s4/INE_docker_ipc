@@ -1,6 +1,4 @@
 from reporteine.reporteine import ReporteINE
-import pdb
-pdb.set_trace()
 
 mes = 5
 anio = 2023
