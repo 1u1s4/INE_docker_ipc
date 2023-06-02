@@ -51,7 +51,7 @@ COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
 COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
 RUN fc-cache -f -v
 
-COPY data/db_b /app/db_b
+COPY data/db_ipc /app/db_b
 COPY scrips/mapa_test.py /app/mapa_test.py
 COPY scrips/reporte_test.py /app/reporte_test2.py
 
