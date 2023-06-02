@@ -46,12 +46,14 @@ RUN pip3 install \
     git+https://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@github.com/1u1s4/ineipc
 
 # Incluir la fuente personalizada
-COPY archivos/OpenSans-CondLight.ttf /usr/share/fonts/
+COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
+COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
+COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
 RUN fc-cache -f -v
 
-COPY archivos/db_b /app/db_b
-COPY archivos/mapa_test.py /app/mapa_test.py
-COPY archivos/reporte_test.py /app/reporte_test2.py
+COPY data/db_b /app/db_b
+COPY scrips/mapa_test.py /app/mapa_test.py
+COPY scrips/reporte_test.py /app/reporte_test2.py
 
 # Iniciar una shell Bash
 CMD ["/bin/bash"]
