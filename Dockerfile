@@ -16,11 +16,16 @@ RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfr
 # Establece la versión de Java 
 RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
 
+# Define el directorio de instalación de Java como variable de entorno JAVA_HOME
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+
+# Añade el directorio donde se encuentra libjvm.so a LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH $JAVA_HOME/jre/lib/amd64/server
 
 # Instala R
 RUN apt-get update && apt-get install -y r-base
 
+# Actualiza la configuración de Java para R
 RUN R CMD javareconf
 
 # Instala los paquetes de devtools y rJava en R
@@ -46,7 +51,7 @@ RUN fc-cache -f -v
 
 COPY archivos/db_b /app/db_b
 COPY archivos/mapa_test.py /app/mapa_test.py
-COPY archivos/reporte_test.py /app/reporte_test.py
+COPY archivos/reporte_test.py /app/reporte_test2.py
 
 # Iniciar una shell Bash
 CMD ["/bin/bash"]
