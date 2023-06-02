@@ -1,10 +1,6 @@
 from reporteine.reporteine import ReporteINE
-import pdb
-pdb.set_trace()
 
-mes = 5
-anio = 2023
-reporte = ReporteINE("Hechos Delictivos", anio, mes)
+reporte = ReporteINE("Hechos Delictivos", 2023, 5)
 
 # capitulo 1
 reporte.presentacion("")
@@ -20,7 +16,7 @@ reporte.agregar_subcapitulo(
     fuente="INE, con datos de la Policía Nacional Civil",
     tipo_grafico="barra",
     data=[('Contra el patrimonio', 44.64), ('Otras causas', 19.36), ('Lesiones', 12.54), ('Homicidios', 12.5), ('Contra la libertad', 10.96)],
-    opciones_grafico=dict(Q4Etiquetas=True)
+    opciones_grafico=dict()
 )
 
 reporte.crear_reporte()
