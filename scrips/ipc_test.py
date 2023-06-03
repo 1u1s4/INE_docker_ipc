@@ -2,14 +2,10 @@ from ineipc.datosipc import datosIPC
 
 from funcionesjo import mes_by_ordinal
 from reporteine.reporteine import ReporteINE
-datos = datosIPC(2023, 5, dbBackup=1)
 
-mes = 5
-anio = 2023
-mes_ = mes_by_ordinal(mes, abreviado=False).capitalize()
-fecha = f"{mes_} {anio}"
-datos = datosIPC(anio, mes, dbBackup=1)
-reporte = ReporteINE("Índice de Precios al Consumidor", anio, mes)
+fecha = f"{mes_by_ordinal(5, abreviado=False).capitalize()} {2023}"
+datos = datosIPC(2023, 5, dbBackup=1)
+reporte = ReporteINE("Índice de Precios al Consumidor", 2023, 5)
 
 subcap_data_imputacion = ([('May-2022', 3.3731644580470808),
   ('Jun-2022', 3.4859976662777132),
