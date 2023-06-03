@@ -394,7 +394,7 @@ for RegCod in range(1, 9):
         data=subcap_data[0],
         opciones_grafico={"precision":2}
     )
-
+"""
 #capitulo 4
 reporte.agregar_capitulo(
     titulo="Anexos",
@@ -415,7 +415,7 @@ for Gba in datos_gba:
         data=datosGba,
         opciones_grafico={"precision":2, "Q4Etiquetas":True}
     )
-
+"""
 reporte.crear_reporte()
 reporte.compilar_reporte()
 reporte.compilar_reporte()
