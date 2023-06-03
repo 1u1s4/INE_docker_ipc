@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
 # Instala OpenJDK 8, Python, pip, las bibliotecas GDAL y texlive-xetex
-RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev texlive-xetex
+RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev texlive-xetex texlive-science
 
 # Instala las bibliotecas necesarias para 'devtools'
 RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
