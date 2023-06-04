@@ -11,7 +11,7 @@ RUN apt-get install -y python3.11
 
 # Instala OpenJDK 8 (1.8.0_362), git, las bibliotecas GDAL y texlive-xetex
 RUN apt-get install -y \
-    openjdk-8-jdk=1.8.0_362-8u372-ga~us1-0ubuntu1~22.04-b09 \
+    openjdk-8-jdk=1.8.0 \
     git \
     libgdal-dev \
     texlive-xetex \
