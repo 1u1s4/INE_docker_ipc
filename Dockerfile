@@ -7,11 +7,11 @@ ENV DEBIAN_FRONTEND noninteractive
 # Actualiza la lista de paquetes
 RUN apt-get update
 
-RUN apt-get install -y python3.11
-
-# Instala OpenJDK 8 (1.8.0_362), git, las bibliotecas GDAL y texlive-xetex
+# Instala Python 3.11, pip3, OpenJDK 8, git, las bibliotecas GDAL y texlive-xetex
 RUN apt-get install -y \
-    openjdk-8-jdk=1.8.0 \
+    python3.11 \
+    python3-pip \
+    openjdk-8-jdk \
     git \
     libgdal-dev \
     texlive-xetex \
