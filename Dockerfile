@@ -7,14 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Actualiza la lista de paquetes
 RUN apt-get update
 
-# Instala software-properties-common para poder usar add-apt-repository
-RUN apt-get install -y software-properties-common
-
-# Agrega el PPA de Deadsnakes
-RUN add-apt-repository ppa:deadsnakes/ppa
-
-# Instala Python 3.11.3
-RUN apt-get install -y python3.11=3.11.3-1+bionic1
+RUN apt-get install -y python3.11
 
 # Instala OpenJDK 8 (1.8.0_362), git, las bibliotecas GDAL y texlive-xetex
 RUN apt-get install -y \
