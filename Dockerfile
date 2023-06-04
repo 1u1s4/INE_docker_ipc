@@ -7,13 +7,27 @@ ENV DEBIAN_FRONTEND noninteractive
 # Actualiza la lista de paquetes
 RUN apt-get update
 
-# Instala OpenJDK 8, Python, pip, las bibliotecas GDAL y texlive-xetex
-RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev texlive-xetex texlive-science
+# Instala software-properties-common para poder usar add-apt-repository
+RUN apt-get install -y software-properties-common
 
-# Instala las bibliotecas necesarias para 'devtools'
-RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
+# Agrega el PPA de Deadsnakes
+RUN add-apt-repository ppa:deadsnakes/ppa
 
-# Establece la versión de Java 
+# Instala Python 3.11.3
+RUN apt-get install -y python3.11=3.11.3-1+bionic1
+
+# Instala OpenJDK 8 (1.8.0_362), git, las bibliotecas GDAL y texlive-xetex
+RUN apt-get install -y \
+    openjdk-8-jdk=1.8.0_362-8u372-ga~us1-0ubuntu1~22.04-b09 \
+    git \
+    libgdal-dev \
+    texlive-xetex \
+    texlive-science
+
+# Python, pip, las bibliotecas GDAL y texlive-xetex
+# RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev texlive-xetex texlive-science
+
+# Establece la versión de Java
 RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
 
 # Define el directorio de instalación de Java como variable de entorno JAVA_HOME
@@ -28,14 +42,16 @@ RUN apt-get update && apt-get install -y r-base
 # Actualiza la configuración de Java para R
 RUN R CMD javareconf
 
-# Instala los paquetes de devtools y rJava en R
+# Instala devtools
+# Instala las bibliotecas necesarias para 'devtools'
+RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
 RUN R -e "install.packages('devtools', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('rJava', repos='http://cran.rstudio.com/')"
 
-RUN apt-get install -y git
+# Usa devtools para instalar rJava (versión 1.0.6)
+RUN R -e "devtools::install_version('rJava', version = '1.0.6', repos='http://cran.rstudio.com/')"
 
 # Instalar paquetes R desde GitHub
-RUN R -e "devtools::install_github('yihui/tikzDevice')"
+RUN R -e "devtools::install_github('yihui/tikzDevice', ref = 'v0.12.4')"
 RUN R -e "devtools::install_github('1u1s4/funcionesINE@gpt', upgrade='never', INSTALL_opts = '--no-test-load')"
 
 # Instalar el paquete Python desde el repositorio Git
@@ -48,11 +64,13 @@ RUN pip3 install \
 COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
 COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
 COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
+# Actualizar la caché de fuentes
 RUN fc-cache -f -v
 
 # Copiar diccionario tikz
 COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
 
+# tests
 COPY data/db_ipc /app/db_b
 COPY scrips/ipc_test.py /app/ipc_test.py
 COPY scrips/grafica_test.py /app/grafica_test.py
