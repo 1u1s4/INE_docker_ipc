@@ -36,7 +36,7 @@ RUN apt-get install -y git
 
 # Instalar paquetes R desde GitHub
 RUN R -e "devtools::install_github('yihui/tikzDevice')"
-RUN R -e "devtools::install_github('1u1s4/funcionesINE', upgrade='never', INSTALL_opts = '--no-test-load')"
+RUN R -e "devtools::install_github('1u1s4/funcionesINE@gpt', upgrade='never', INSTALL_opts = '--no-test-load')"
 
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install \
