@@ -41,9 +41,8 @@ RUN R -e "devtools::install_github('1u1s4/funcionesINE', upgrade='never', INSTAL
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install \
     git+https://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@github.com/1u1s4/funcionesjo.git \
-    git+https://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@github.com/1u1s4/colorimapgt.git \
-    git+https://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@github.com/1u1s4/reporteine \
-    git+https://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@github.com/1u1s4/ineipc
+    git+https://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@github.com/1u1s4/ineipc.git \
+    git+https://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@github.com/1u1s4/reporteine@remove_xlsx_csv 
 
 # Incluir la fuente personalizada
 COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
@@ -51,9 +50,12 @@ COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
 COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
 RUN fc-cache -f -v
 
+# Copiar diccionario tikz
+COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
+
 COPY data/db_ipc /app/db_b
-COPY scrips/mapa_test.py /app/mapa_test.py
-COPY scrips/reporte_test.py /app/reporte_test2.py
+COPY scrips/ipc_test.py /app/ipc_test.py
+COPY scrips/grafica_test.py /app/grafica_test.py
 
 # Iniciar una shell Bash
 CMD ["/bin/bash"]
