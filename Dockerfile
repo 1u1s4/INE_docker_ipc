@@ -51,7 +51,7 @@ RUN R -e "devtools::install_github('1u1s4/funcionesINE@gpt', upgrade='never', IN
 RUN pip3 install \
     git+https://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@github.com/1u1s4/funcionesjo.git \
     git+https://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@github.com/1u1s4/ineipc.git \
-    git+https://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@github.com/1u1s4/reporteine@remove_xlsx_csv 
+    git+https://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@github.com/1u1s4/reporteine
 
 # Incluir la fuente personalizada
 COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
