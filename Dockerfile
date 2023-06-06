@@ -65,7 +65,7 @@ COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
 
 # tests
 COPY data/db_ipc /app/db_b
-COPY scrips/ipc_test.py /app/ipc_test.py
+COPY scrips/ipc_test2.py /app/ipc_test.py
 COPY scrips/grafica_test.py /app/grafica_test.py
 
 # Iniciar una shell Bash
