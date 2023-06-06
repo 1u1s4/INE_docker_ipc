@@ -1,11 +1,17 @@
 from reporteine.reporteine import ReporteINE
 
-reporte = ReporteINE("Hechos Delictivos", 2023, 5)
+reporte = ReporteINE(
+    nombre_reporte="Héchos Delictivos",
+    anio=2023,
+    mes=5,
+    periodo="Primer trimestre 2023",
+    direccion="DPIR"
+)
 
 # capitulo 1
 reporte.presentacion("")
 reporte.agregar_capitulo(
-    titulo="Detalle del operativo de campo del IPC"
+    titulo="Detalle del óperativo de campo del IPC"
 )
 
 reporte.agregar_subcapitulo(
