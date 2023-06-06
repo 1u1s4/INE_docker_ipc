@@ -22,45 +22,12 @@ subcap_data_imputacion = ([('May-2022', 3.3731644580470808),
   ('May-2023', 1.2)],
  'El porcentaje de precios imputados en mayo 2023 es de 1.22%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de mqyo 2023 con una cantidad de 1.22%.')
 
-
-subcap_data_fuentes = ([('May-2022', 6020),
-  ('Jun-2022', 6733),
-  ('Jul-2022', 7114),
-  ('Ago-2022', 6089),
-  ('Sep-2022', 6776),
-  ('Oct-2022', 6992),
-  ('Nov-2022', 7149),
-  ('Dic-2022', 7691),
-  ('Ene-2023', 8618),
-  ('Feb-2023', 8047),
-  ('Mar-2023', 8529),
-  ('Abr-2023', 8680),
-  ('May-2023', 8049)],
- 'La cantidad de fuentes consultadas en mayo 2023 es de 8,049. La mayor cantidad de fuentes consultadas fue en el mes de abril 2023 con una cantidad de 8,680 y la menor se encuentra en el mes de mayo 2022 con una cantidad de 6,020.')
-
-
-subcap_data_precios = ([('May-2022', 31533),
-  ('Jun-2022', 34240),
-  ('Jul-2022', 34900),
-  ('Ago-2022', 32350),
-  ('Sep-2022', 35368),
-  ('Oct-2022', 35877),
-  ('Nov-2022', 38182),
-  ('Dic-2022', 41434),
-  ('Ene-2023', 44643),
-  ('Feb-2023', 44050),
-  ('Mar-2023', 46046),
-  ('Abr-2023', 46252),
-  ('May-2023', 45403)],
- 'La cantidad de precios diligenciados en mayo 2023 es de 45,403. La mayor cantidad de precios diligenciados fue en el mes de abril 2023 con una cantidad de 46,252 y la menor se encuentra en el mes de mayo 2022 con una cantidad de 31,533.')
-
-
 # capitulo 1
 reporte.presentacion(datos.introduccion())
 reporte.agregar_capitulo(
     titulo="Detalle del operativo de campo del IPC"
 )
-subcap_data = subcap_data_fuentes
+subcap_data = datos.serie_fuentes()
 reporte.agregar_subcapitulo(
     titulo="Cobertura de fuentes",
     titulo_grafico="Histórico de cobertura de fuentes",
@@ -71,7 +38,7 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico=dict(Q4Etiquetas=True)
 )
-subcap_data = subcap_data_precios
+subcap_data = datos.series_precios()
 reporte.agregar_subcapitulo(
     titulo="Cobertura de precios",
     titulo_grafico="Histórico de cobertura de precios",
