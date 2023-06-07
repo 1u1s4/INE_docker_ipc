@@ -49,9 +49,10 @@ RUN R -e "devtools::install_github('1u1s4/funcionesINE@gpt', upgrade='never', IN
 
 # Instalar el paquete Python desde el repositorio Git
 RUN pip3 install \
+    --no-cache-dir \
     git+https://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@github.com/1u1s4/funcionesjo.git \
     git+https://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@github.com/1u1s4/ineipc.git \
-    git+https://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@github.com/1u1s4/reporteine
+    git+https://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@github.com/1u1s4/reporteine.git
 
 # Incluir la fuente personalizada
 COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
@@ -61,11 +62,11 @@ COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
 RUN fc-cache -f -v
 
 # Copiar diccionario tikz
-COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
+# COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
 
 # tests
 COPY data/db_ipc /app/db_b
-COPY scrips/ipc_test2.py /app/ipc_test.py
+COPY scrips/ipc_test.py /app/ipc_test.py
 COPY scrips/grafica_test.py /app/grafica_test.py
 
 # Iniciar una shell Bash
