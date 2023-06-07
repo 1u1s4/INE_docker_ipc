@@ -1,11 +1,16 @@
 from ineipc.datosipc import datosIPC
-
 from funcionesjo import mes_by_ordinal
 from reporteine.reporteine import ReporteINE
 
 fecha = f"{mes_by_ordinal(5, abreviado=False).capitalize()} {2023}"
 datos = datosIPC(2023, 5, dbBackup=1)
-reporte = ReporteINE("Índice de Precios al Consumidor", 2023, 5)
+
+reporte = ReporteINE(
+    nombre_reporte="Índice de Precios al Consumidor",
+    anio=2023,
+    mes=6,
+    periodo="Mayo 2023"
+)
 
 subcap_data_imputacion = ([('May-2022', 3.3731644580470808),
   ('Jun-2022', 3.4859976662777132),
@@ -18,8 +23,8 @@ subcap_data_imputacion = ([('May-2022', 3.3731644580470808),
   ('Ene-2023', 3.240628778718259),
   ('Feb-2023', 2.070393374741201),
   ('Mar-2023', 2.8352349686631926),
-  ('Abr-2023', 1.6),
-  ('May-2023', 1.2)],
+  ('Abr-2023', 1.61),
+  ('May-2023', 1.22)],
  'El porcentaje de precios imputados en mayo 2023 es de 1.22%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de mqyo 2023 con una cantidad de 1.22%.')
 
 # capitulo 1
@@ -38,7 +43,7 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico=dict(Q4Etiquetas=True)
 )
-subcap_data = datos.series_precios()
+subcap_data = datos.serie_precios()
 reporte.agregar_subcapitulo(
     titulo="Cobertura de precios",
     titulo_grafico="Histórico de cobertura de precios",
@@ -58,7 +63,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="columna",
     data=subcap_data[0],
-    opciones_grafico={"precision":1}
+    opciones_grafico={"precision":2}
 )
 subcap_data = datos.desagregacion_fuentes()
 reporte.agregar_subcapitulo(
@@ -69,7 +74,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="barra",
     data=subcap_data[0],
-    opciones_grafico={"precision":1}
+    opciones_grafico={"precision":2}
 )
 # capitulo 2
 reporte.agregar_capitulo(
@@ -156,7 +161,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="columna",
     data=subcap_data[0],
-    opciones_grafico={}
+    opciones_grafico={"precision":2}
 )
 subcap_data = datos.serie_inflacion(0, 'intermensual')
 reporte.agregar_subcapitulo(
@@ -213,28 +218,29 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
-subcap_data = datos.serie_historica("mensual")
+subcap_data = datos.serie_historica_mensual_inflacion(0, 'intermensual')
 reporte.agregar_subcapitulo(
-    titulo="Serie histórica del la variación mensual",
-    titulo_grafico="Variación intermensual del IPC",
+    titulo="Evolución de la variación mensual del IPC",
+    titulo_grafico="Variación mensual del IPC",
     descripcion_grafico="República de Guatemala, serie histórica, en porcentaje",
     descripcion=subcap_data[1],
     fuente="INE",
-    tipo_grafico="lineal",
+    tipo_grafico="columna",
     data=subcap_data[0],
-    opciones_grafico=dict(Q4Etiquetas=True, etiquetaCadaSeis=True)
+    opciones_grafico={"precision":2}
 )
-subcap_data = datos.serie_historica("anual")
+subcap_data = datos.serie_historica_mensual_inflacion(0, 'interanual')
 reporte.agregar_subcapitulo(
-    titulo="Serie histórica del ritmo inflacionario",
+    titulo="Evolución de la variación interanual del IPC",
     titulo_grafico="Variación interanual del IPC",
     descripcion_grafico="República de Guatemala, serie histórica, en porcentaje",
     descripcion=subcap_data[1],
     fuente="INE",
-    tipo_grafico="lineal",
+    tipo_grafico="columna",
     data=subcap_data[0],
-    opciones_grafico=dict(Q4Etiquetas=True, etiquetaCadaSeis=True)
+    opciones_grafico={"precision":2}
 )
+
 # capitulos regionales
 region = {
     1: 'I',
