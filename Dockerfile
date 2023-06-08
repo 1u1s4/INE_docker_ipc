@@ -43,7 +43,7 @@ ENV LD_LIBRARY_PATH $JAVA_HOME/jre/lib/amd64/server
 RUN R CMD javareconf
 
 # Instala devtools desde el repositorio especificado
-RUN R -e "install.packages('devtools', repos='https://cran.itam.mx/')"
+RUN R -e "install.packages('devtools')"
 
 # Usa devtools para instalar la versión especificada de rJava
 RUN R -e "devtools::install_version('rJava', version = '1.0.6', repos='http://cran.rstudio.com/')"
