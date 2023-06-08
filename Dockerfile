@@ -5,9 +5,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # Incorpora fuentes personalizadas al sistema
-COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
-COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
-COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
+COPY fuentes/*.ttf /usr/share/fonts/
 
 # Copia archivos de prueba al directorio 'app' del contenedor
 COPY data/db_ipc /app/db_b
@@ -55,11 +53,12 @@ RUN R -e "devtools::install_github('yihui/tikzDevice', ref = 'v0.12.4')"
 RUN R -e "devtools::install_github('1u1s4/funcionesINE@gpt', upgrade='never', INSTALL_opts = '--no-test-load')"
 
 # Instala paquetes Python específicos desde repositorios de GitHub
+ENV GITHUB_TOKEN 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
 RUN pip3 install \
     --no-cache-dir \
-    git+https://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@github.com/1u1s4/funcionesjo.git \
-    git+https://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@github.com/1u1s4/ineipc.git \
-    git+https://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@github.com/1u1s4/reporteine.git
+    git+https://${GITHUB_TOKEN}@github.com/1u1s4/funcionesjo.git \
+    git+https://${GITHUB_TOKEN}@github.com/1u1s4/ineipc.git \
+    git+https://${GITHUB_TOKEN}@github.com/1u1s4/reporteine.git
 
 # Configura el comando por defecto a ejecutar
 CMD ["/bin/bash"]
