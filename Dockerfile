@@ -8,7 +8,6 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
 COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
 COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
-RUN fc-cache -f -v
 
 # Copia archivos de prueba al directorio 'app' del contenedor
 COPY data/db_ipc /app/db_b
@@ -28,7 +27,10 @@ RUN apt-get update && apt-get install -y \
     libfontconfig1-dev \
     libfreetype6-dev \
     libharfbuzz-dev \
-    libfribidi-dev
+    libfribidi-dev \
+&& rm -rf /var/lib/apt/lists/*  # Limpiar la caché
+
+RUN fc-cache -f -v
 
 # Establece la versión predeterminada de Java
 RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
@@ -59,9 +61,5 @@ RUN pip3 install \
     git+https://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@github.com/1u1s4/ineipc.git \
     git+https://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@github.com/1u1s4/reporteine.git
 
-# Limpia la caché de paquetes
-RUN rm -rf /var/lib/apt/lists/*
-
 # Configura el comando por defecto a ejecutar
 CMD ["/bin/bash"]
-
