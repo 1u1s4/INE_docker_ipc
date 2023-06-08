@@ -38,7 +38,7 @@ RUN R CMD javareconf
 # Instala devtools
 # Instala las bibliotecas necesarias para 'devtools'
 RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
-RUN R -e "install.packages('devtools', repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('devtools', repos='https://cran.itam.mx/')"
 
 # Usa devtools para instalar rJava (versión 1.0.6)
 RUN R -e "devtools::install_version('rJava', version = '1.0.6', repos='http://cran.rstudio.com/')"
