@@ -4,21 +4,37 @@ FROM ubuntu:22.04
 # Asegúrate de que todo se ejecute en modo noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 
-# Actualiza la lista de paquetes
-RUN apt-get update
+# Incluir la fuente personalizada
+COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
+COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
+COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
+# Actualizar la caché de fuentes
+RUN fc-cache -f -v
+
+# Copiar diccionario tikz
+# COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
+
+# tests
+COPY data/db_ipc /app/db_b
+COPY scrips/ipc_test.py /app/ipc_test.py
+COPY scrips/grafica_test.py /app/grafica_test.py
 
 # Instala Python 3.11, pip3, OpenJDK 8, git, las bibliotecas GDAL y texlive-xetex
 RUN apt-get install -y \
+    update \
     python3.11 \
     python3-pip \
     openjdk-8-jdk \
+    r-base \
     git \
     libgdal-dev \
     texlive-xetex \
-    texlive-science
-
-# Python, pip, las bibliotecas GDAL y texlive-xetex
-# RUN apt-get install -y openjdk-8-jdk python3 python3-pip libgdal-dev texlive-xetex texlive-science
+    texlive-science \
+# Instala las bibliotecas necesarias para 'devtools'
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libharfbuzz-dev \
+    libfribidi-dev
 
 # Establece la versión de Java
 RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
@@ -29,15 +45,10 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 # Añade el directorio donde se encuentra libjvm.so a LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH $JAVA_HOME/jre/lib/amd64/server
 
-# Instala R
-RUN apt-get update && apt-get install -y r-base
-
 # Actualiza la configuración de Java para R
 RUN R CMD javareconf
 
 # Instala devtools
-# Instala las bibliotecas necesarias para 'devtools'
-RUN apt-get install -y libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
 RUN R -e "install.packages('devtools', repos='https://cran.itam.mx/')"
 
 # Usa devtools para instalar rJava (versión 1.0.6)
@@ -55,21 +66,6 @@ RUN pip3 install \
     git+https://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@github.com/1u1s4/reporteine.git
 
 RUN rm -rf /var/lib/apt/lists/*
-
-# Incluir la fuente personalizada
-COPY fuentes/OpenSans-CondBold.ttf /usr/share/fonts/
-COPY fuentes/OpenSans-CondLight.ttf /usr/share/fonts/
-COPY fuentes/OpenSans-CondLightItalic.ttf /usr/share/fonts/
-# Actualizar la caché de fuentes
-RUN fc-cache -f -v
-
-# Copiar diccionario tikz
-# COPY dict/tikzMetricsDictionary /Dictionary/tikzMetricsDictionary
-
-# tests
-COPY data/db_ipc /app/db_b
-COPY scrips/ipc_test.py /app/ipc_test.py
-COPY scrips/grafica_test.py /app/grafica_test.py
 
 # Iniciar una shell Bash
 CMD ["/bin/bash"]
