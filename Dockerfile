@@ -7,11 +7,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # Incorpora fuentes personalizadas al sistema
 COPY fuentes/*.ttf /usr/share/fonts/
 
-# Copia archivos de prueba al directorio 'app' del contenedor
-COPY data/db_ipc /app/db_b
-COPY scrips/ipc_test.py /app/ipc_test.py
-COPY scrips/grafica_test.py /app/grafica_test.py
-
 # Actualiza lista de paquetes e instala dependencias
 RUN apt-get update && apt-get install -y \
     python3.11 \
@@ -59,6 +54,11 @@ RUN pip3 install \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/funcionesjo.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/ineipc.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/reporteine.git
+
+# Copia archivos de prueba al directorio 'app' del contenedor
+COPY data/db_ipc /app/db_b
+COPY scrips/reporte_test.py /app/main.py
+COPY data/diagramas_ipc /app/diagramas
 
 # Configura el comando por defecto a ejecutar
 CMD ["/bin/bash"]
