@@ -76,6 +76,47 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2}
 )
+# diagramas
+reporte.agregar_subcapitulo(
+    titulo="Pre-diligenciamiento, recopilación, digitación y crítica (61 personas)",
+    titulo_grafico="",
+    descripcion_grafico="",
+    descripcion="",
+    fuente="INE",
+    tipo_grafico="diagrama_tikz",
+    data="diagramas/dgrm_ipc_01.tex",
+    opciones_grafico={}
+)
+reporte.agregar_subcapitulo(
+    titulo="Recopilación de precios y pesos por gramo (35 personas)",
+    titulo_grafico="",
+    descripcion_grafico="",
+    descripcion="",
+    fuente="INE",
+    tipo_grafico="diagrama_tikz",
+    data="diagramas/dgrm_ipc_02.tex",
+    opciones_grafico={}
+)
+reporte.agregar_subcapitulo(
+    titulo="Recopilación de datos por cotización (35 personas)",
+    titulo_grafico="",
+    descripcion_grafico="",
+    descripcion="",
+    fuente="INE",
+    tipo_grafico="diagrama_tikz",
+    data="diagramas/dgrm_ipc_03.tex",
+    opciones_grafico={}
+)
+reporte.agregar_subcapitulo(
+    titulo="Supervisión de recolección de datos",
+    titulo_grafico="",
+    descripcion_grafico="",
+    descripcion="",
+    fuente="INE",
+    tipo_grafico="diagrama_tikz",
+    data="diagramas/dgrm_ipc_04.tex",
+    opciones_grafico={}
+)
 # capitulo 2
 reporte.agregar_capitulo(
     titulo="Variables exógenas"
