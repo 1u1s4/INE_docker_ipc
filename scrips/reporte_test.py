@@ -118,6 +118,7 @@ reporte.agregar_subcapitulo(
     opciones_grafico={}
 )
 
+reporte.set_formulas('formulas_ipc.tex')
 reporte.crear_reporte()
 reporte.compilar_reporte()
 reporte.compilar_reporte()
