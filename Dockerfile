@@ -41,6 +41,7 @@ ENV LD_LIBRARY_PATH $JAVA_HOME/jre/lib/amd64/server
 # Copia archivos que cambian menos frecuentemente
 COPY data/db_ipc /app/db_b
 COPY data/diagramas_ipc /app/diagramas
+COPY data/*.tex /app/
 
 # Instala paquetes Python específicos desde repositorios de GitHub
 ENV GITHUB_TOKEN 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
