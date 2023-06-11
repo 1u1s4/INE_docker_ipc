@@ -1,7 +1,7 @@
 from ineipc.datosipc import datosIPC
 from funcionesjo import mes_by_ordinal
 from reporteine.reporteine import ReporteINE
-
+#pip3 install git+https://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@github.com/1u1s4/reporteine.git
 fecha = f"{mes_by_ordinal(5, abreviado=False).capitalize()} {2023}"
 datos = datosIPC(2023, 5, dbBackup=1)
 
@@ -120,5 +120,3 @@ reporte.agregar_subcapitulo(
 
 reporte.set_formulas('formulas_ipc.tex')
 reporte.crear_reporte()
-reporte.compilar_reporte()
-reporte.compilar_reporte()
