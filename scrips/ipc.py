@@ -76,6 +76,29 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2}
 )
+# mapas
+subcap_data = datos.cobertura_fuentes()
+reporte.agregar_subcapitulo(
+    titulo="Mapa de cobertura de fuentes",
+    titulo_grafico="Cantidad de fuentes diligenciadas",
+    descripcion_grafico=f"República de Guatemala, {fecha}, adimensional",
+    descripcion=subcap_data[1],
+    fuente="INE",
+    tipo_grafico="mapa_colorimetrico",
+    data=subcap_data[0],
+    opciones_grafico={"precision":2}
+)
+subcap_data = datos.cobertura_precios()
+reporte.agregar_subcapitulo(
+    titulo="Mapa de cobertura de precios",
+    titulo_grafico="Cantidad de precios diligenciadas",
+    descripcion_grafico=f"República de Guatemala, {fecha}, adimensional",
+    descripcion=subcap_data[1],
+    fuente="INE",
+    tipo_grafico="mapa_colorimetrico",
+    data=subcap_data[0],
+    opciones_grafico={"precision":2}
+)
 # diagramas
 reporte.agregar_subcapitulo(
     titulo="Pre-diligenciamiento, recopilación, digitación y crítica (61 personas)",
@@ -396,6 +419,5 @@ for Gba in datos_gba:
         opciones_grafico={"precision":2, "Q4Etiquetas":True}
     )
 """
+reporte.set_formulas('formulas_ipc.tex')
 reporte.crear_reporte()
-reporte.compilar_reporte()
-reporte.compilar_reporte()
