@@ -86,7 +86,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="mapa_colorimetrico",
     data=subcap_data[0],
-    opciones_grafico={"precision":2}
+    opciones_grafico={"precision":0}
 )
 subcap_data = datos.cobertura_precios()
 reporte.agregar_subcapitulo(
@@ -97,7 +97,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="mapa_colorimetrico",
     data=subcap_data[0],
-    opciones_grafico={"precision":2}
+    opciones_grafico={"precision":0}
 )
 # diagramas
 reporte.agregar_subcapitulo(
@@ -303,6 +303,29 @@ reporte.agregar_subcapitulo(
     tipo_grafico="columna",
     data=subcap_data[0],
     opciones_grafico={"precision":2}
+)
+# mapas
+subcap_data = datos.ipc_regiones()
+reporte.agregar_subcapitulo(
+    titulo="Mapa de IPC",
+    titulo_grafico="Número indice",
+    descripcion_grafico=f"República de Guatemala, {fecha}, adimensional",
+    descripcion=subcap_data[1],
+    fuente="INE",
+    tipo_grafico="mapa_colorimetrico",
+    data=subcap_data[0],
+    opciones_grafico={}
+)
+subcap_data = datos.inflacion_interanual_regiones()
+reporte.agregar_subcapitulo(
+    titulo="Mapa de la variación interanual de los números indices",
+    titulo_grafico="Ritmo inflacionario",
+    descripcion_grafico=f"República de Guatemala, {fecha}, adimensional",
+    descripcion=subcap_data[1],
+    fuente="INE",
+    tipo_grafico="mapa_colorimetrico",
+    data=subcap_data[0],
+    opciones_grafico={}
 )
 
 # capitulos regionales
