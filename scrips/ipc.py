@@ -2,17 +2,17 @@ from ineipc.datosipc import datosIPC
 from funcionesjo import mes_by_ordinal
 from reporteine.reporteine import ReporteINE
 
-fecha = f"{mes_by_ordinal(5, abreviado=False).capitalize()} {2023}"
-datos = datosIPC(2023, 5, dbBackup=1)
+fecha = f"{mes_by_ordinal(6, abreviado=False).capitalize()} {2023}"
+datos = datosIPC(2023, 6, dbBackup=1)
 
 reporte = ReporteINE(
     nombre_reporte="Índice de Precios al Consumidor",
     anio=2023,
-    mes=6,
-    periodo="Mayo 2023"
+    mes=7,
+    periodo="Junio 2023"
 )
 
-subcap_data_imputacion = ([('May-2022', 3.3731644580470808),
+subcap_data_imputacion = ([
   ('Jun-2022', 3.4859976662777132),
   ('Jul-2022', 4.3942410340748435),
   ('Ago-2022', 3.0303989867004435),
@@ -24,8 +24,9 @@ subcap_data_imputacion = ([('May-2022', 3.3731644580470808),
   ('Feb-2023', 2.070393374741201),
   ('Mar-2023', 2.8352349686631926),
   ('Abr-2023', 1.61),
-  ('May-2023', 1.22)],
- 'El porcentaje de precios imputados en mayo 2023 es de 1.22%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de mqyo 2023 con una cantidad de 1.22%.')
+  ('May-2023', 1.22),
+  ('Jun-2023', 1.10)],
+ 'El porcentaje de precios imputados en junio 2023 es de 1.10%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de mqyo 2023 con una cantidad de 1.22%.')
 
 # capitulo 1
 reporte.presentacion(datos.introduccion())
@@ -420,7 +421,7 @@ for RegCod in range(1, 9):
         data=subcap_data[0],
         opciones_grafico={"precision":2}
     )
-"""
+
 #capitulo 4
 reporte.agregar_capitulo(
     titulo="Anexos",
@@ -441,6 +442,6 @@ for Gba in datos_gba:
         data=datosGba,
         opciones_grafico={"precision":2, "Q4Etiquetas":True}
     )
-"""
+
 reporte.set_formulas('formulas_ipc.tex')
 reporte.crear_reporte()
