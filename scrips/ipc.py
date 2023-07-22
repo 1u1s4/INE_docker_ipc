@@ -1,9 +1,9 @@
-from ineipc.datosipc import datosIPC
 from funcionesjo import mes_by_ordinal
+from INEipc import DatosIPC
 from reporteine.reporteine import ReporteINE
 
 fecha = f"{mes_by_ordinal(6, abreviado=False).capitalize()} {2023}"
-datos = datosIPC(2023, 6, dbBackup=1)
+datos = DatosIPC(2023, 6, dbBackup=1)
 
 reporte = ReporteINE(
     nombre_reporte="Índice de Precios al Consumidor",
