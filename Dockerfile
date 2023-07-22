@@ -49,7 +49,7 @@ RUN pip3 install \
     --no-cache-dir \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/colorimapgt.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEipc.git \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/reporteine.git
+    git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEreporte.git
 
 # Copia archivos que cambian más frecuentemente
 COPY scrips/ipc.py /app/main.py
