@@ -47,9 +47,8 @@ COPY data/*.tex /app/
 ENV GITHUB_TOKEN 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
 RUN pip3 install \
     --no-cache-dir \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/funcionesjo.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/colorimapgt.git \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/ineipc.git \
+    git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEipc.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/reporteine.git
 
 # Copia archivos que cambian más frecuentemente
