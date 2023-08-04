@@ -39,6 +39,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV LD_LIBRARY_PATH $JAVA_HOME/jre/lib/amd64/server
 
 # Copia archivos que cambian menos frecuentemente
+COPY key.key /app/
 COPY data/db_ipc /app/db_b
 COPY data/diagramas_ipc /app/diagramas
 COPY data/*.tex /app/
@@ -47,7 +48,6 @@ COPY data/*.tex /app/
 ENV GITHUB_TOKEN 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
 RUN pip3 install \
     --no-cache-dir \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/colorimapgt.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEipc.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEcba.git \
     git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEreporte.git
