@@ -1,19 +1,18 @@
-from funcionesjo import mes_by_ordinal
+from utilsjo import mes_by_ordinal
 from INEipc import DatosIPC
 from INEreporte import Reporte
 
-fecha = f"{mes_by_ordinal(6, abreviado=False).capitalize()} {2023}"
-datos = DatosIPC(2023, 6, dbPack=1)
+fecha = f"{mes_by_ordinal(7, abreviado=False).capitalize()} {2023}"
+datos = DatosIPC(2023, 7, dbPack=1)
 
 reporte = Reporte(
     nombre_reporte="Índice de Precios al Consumidor",
     anio=2023,
-    mes=7,
-    periodo="Junio 2023"
+    mes=8,
+    periodo="Julio 2023"
 )
 
 subcap_data_imputacion = ([
-  ('Jun-2022', 3.4859976662777132),
   ('Jul-2022', 4.3942410340748435),
   ('Ago-2022', 3.0303989867004435),
   ('Sep-2022', 4.4351846566584845),
@@ -25,8 +24,9 @@ subcap_data_imputacion = ([
   ('Mar-2023', 2.8352349686631926),
   ('Abr-2023', 1.61),
   ('May-2023', 1.22),
-  ('Jun-2023', 1.10)],
- 'El porcentaje de precios imputados en junio 2023 es de 1.10%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de mqyo 2023 con una cantidad de 1.22%.')
+  ('Jun-2023', 1.10),
+  ('Jul-2023', 1.71)],
+ 'El porcentaje de precios imputados en julio 2023 es de 1.71%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de junio 2023 con una cantidad de 1.10%.')
 
 # capitulo 1
 reporte.presentacion(datos.introduccion())
@@ -167,7 +167,28 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
-
+subcap_data = datos.cambio_quetzal()
+reporte.agregar_subcapitulo(
+    titulo="Cambio del quetzal",
+    titulo_grafico="Tipo de cambio nominal promedio",
+    descripcion_grafico="República de Guatemala, serie histórica, en quetzales por dólar estadounidense",
+    descripcion=subcap_data[1],
+    fuente="Banco de Guatemala",
+    tipo_grafico="lineal",
+    data=subcap_data[0],
+    opciones_grafico={"precision":2, "Q4Etiquetas":True}
+)
+subcap_data = datos.tasa_interes()
+reporte.agregar_subcapitulo(
+    titulo="Tasa de interés",
+    titulo_grafico="Tasas de interés activa bancaria",
+    descripcion_grafico="República de Guatemala, serie histórica, en porcentaje",
+    descripcion=subcap_data[1],
+    fuente="Banco de Guatemala",
+    tipo_grafico="lineal",
+    data=subcap_data[0],
+    opciones_grafico={"precision":2, "Q4Etiquetas":True}
+)
 subcap_data = datos.ipc_usa()
 reporte.agregar_subcapitulo(
     titulo="Índice de Precios al Consumidor de EE.UU.",
