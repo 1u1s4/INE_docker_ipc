@@ -2,18 +2,17 @@ from utilsjo import mes_by_ordinal
 from INEipc import DatosIPC
 from INEreporte import Reporte
 
-fecha = f"{mes_by_ordinal(7, abreviado=False).capitalize()} {2023}"
-datos = DatosIPC(2023, 7, dbPack=1)
+fecha = f"{mes_by_ordinal(8, abreviado=False).capitalize()} {2023}"
+datos = DatosIPC(2023, 8, dbBackup=1)
 
 reporte = Reporte(
     nombre_reporte="Índice de Precios al Consumidor",
     anio=2023,
-    mes=8,
-    periodo="Julio 2023"
+    mes=9,
+    periodo="Agosto 2023"
 )
 
 subcap_data_imputacion = ([
-  ('Jul-2022', 4.3942410340748435),
   ('Ago-2022', 3.0303989867004435),
   ('Sep-2022', 4.4351846566584845),
   ('Oct-2022', 5.289202323100628),
@@ -25,8 +24,9 @@ subcap_data_imputacion = ([
   ('Abr-2023', 1.61),
   ('May-2023', 1.22),
   ('Jun-2023', 1.10),
-  ('Jul-2023', 1.71)],
- 'El porcentaje de precios imputados en julio 2023 es de 1.71%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.28% y el menor se encuentra en el mes de junio 2023 con una cantidad de 1.10%.')
+  ('Jul-2023', 1.71),
+  ('Ago-2023', 1.24)],
+ 'El porcentaje de precios imputados en agosto 2023 es de 1.24%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.29% y el menor se encuentra en el mes de junio 2023 con una cantidad de 1.10%.')
 
 # capitulo 1
 reporte.presentacion(datos.introduccion())
@@ -102,7 +102,7 @@ reporte.agregar_subcapitulo(
 )
 # diagramas
 reporte.agregar_subcapitulo(
-    titulo="Pre-diligenciamiento, recopilación, digitación y crítica (61 personas)",
+    titulo="Pre-diligenciamiento, recopilación, digitación y crítica",
     titulo_grafico="",
     descripcion_grafico="",
     descripcion="",
@@ -112,7 +112,7 @@ reporte.agregar_subcapitulo(
     opciones_grafico={}
 )
 reporte.agregar_subcapitulo(
-    titulo="Recopilación de precios y pesos por gramo (35 personas)",
+    titulo="Recopilación de precios y pesos por gramo",
     titulo_grafico="",
     descripcion_grafico="",
     descripcion="",
@@ -122,7 +122,7 @@ reporte.agregar_subcapitulo(
     opciones_grafico={}
 )
 reporte.agregar_subcapitulo(
-    titulo="Recopilación de datos por cotización (35 personas)",
+    titulo="Recopilación de datos por cotización",
     titulo_grafico="",
     descripcion_grafico="",
     descripcion="",
@@ -369,7 +369,7 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo=f"Evolución del índice en la región {region[RegCod]}",
         titulo_grafico="Índice de la región, base diciembre del 2010",
-        descripcion_grafico=f"Region {region[RegCod]}, serie histórica, adimensional",
+        descripcion_grafico=f"Región {region[RegCod]}, serie histórica, adimensional",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="lineal",
@@ -380,7 +380,7 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo=f"Evolución de la variación interanual del índice en la región {region[RegCod]}",
         titulo_grafico="Variación interanual del índice",
-        descripcion_grafico=f"Region {region[RegCod]}, serie histórica, en porcentaje",
+        descripcion_grafico=f"Región {region[RegCod]}, serie histórica, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="lineal",
@@ -391,7 +391,7 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo=f"Evolución de la variación acumulada del índice en la región {region[RegCod]}",
         titulo_grafico="Variación acumulada del índice",
-        descripcion_grafico=f"Region {region[RegCod]}, serie histórica, en porcentaje",
+        descripcion_grafico=f"Región {region[RegCod]}, serie histórica, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="columna",
@@ -402,7 +402,7 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo=f"Evolución de la variación mensual del índice en la región {region[RegCod]}",
         titulo_grafico="Variación intermensual del índice",
-        descripcion_grafico=f"Region {region[RegCod]}, serie histórica, en porcentaje",
+        descripcion_grafico=f"Región {region[RegCod]}, serie histórica, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="lineal",
@@ -413,7 +413,7 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo="Incidencias mensuales por división de gasto básico",
         titulo_grafico="Incidencias mensuales",
-        descripcion_grafico=f"Region {region[RegCod]}, {fecha}, en porcentaje",
+        descripcion_grafico=f"Región {region[RegCod]}, {fecha}, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="barra",
@@ -424,7 +424,7 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo="Gastos básicos con mayor impacto positivo en la variación mensual",
         titulo_grafico="Gastos básicos con mayor incidencia positiva",
-        descripcion_grafico=f"Region {region[RegCod]}, {fecha}, en porcentaje",
+        descripcion_grafico=f"Región {region[RegCod]}, {fecha}, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="barra",
@@ -435,14 +435,14 @@ for RegCod in range(1, 9):
     reporte.agregar_subcapitulo(
         titulo="Gastos básicos con mayor impacto negativo en la variación mensual",
         titulo_grafico="Gastos básicos con mayor incidencia negativa",
-        descripcion_grafico=f"Region {region[RegCod]}, {fecha}, en porcentaje",
+        descripcion_grafico=f"Región {region[RegCod]}, {fecha}, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
         tipo_grafico="barra",
         data=subcap_data[0],
         opciones_grafico={"precision":2}
     )
-
+'''
 #capitulo 4
 reporte.agregar_capitulo(
     titulo="Anexos",
@@ -463,6 +463,6 @@ for Gba in datos_gba:
         data=datosGba,
         opciones_grafico={"precision":2, "Q4Etiquetas":True}
     )
-
+'''
 reporte.set_formulas('formulas_ipc.tex')
 reporte.crear_reporte()
