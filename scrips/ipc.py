@@ -101,11 +101,12 @@ reporte.agregar_subcapitulo(
     opciones_grafico={"precision":0}
 )
 # diagramas
+dummy_text = "texto texto texto texto texto texto texto"
 reporte.agregar_subcapitulo(
     titulo="Pre-diligenciamiento, recopilación, digitación y crítica",
     titulo_grafico="",
     descripcion_grafico="",
-    descripcion="",
+    descripcion=dummy_text,
     fuente="INE",
     tipo_grafico="diagrama_tikz",
     data="diagramas/dgrm_ipc_01.tex",
@@ -115,7 +116,7 @@ reporte.agregar_subcapitulo(
     titulo="Recopilación de precios y pesos por gramo",
     titulo_grafico="",
     descripcion_grafico="",
-    descripcion="",
+    descripcion=dummy_text,
     fuente="INE",
     tipo_grafico="diagrama_tikz",
     data="diagramas/dgrm_ipc_02.tex",
@@ -125,7 +126,7 @@ reporte.agregar_subcapitulo(
     titulo="Recopilación de datos por cotización",
     titulo_grafico="",
     descripcion_grafico="",
-    descripcion="",
+    descripcion=dummy_text,
     fuente="INE",
     tipo_grafico="diagrama_tikz",
     data="diagramas/dgrm_ipc_03.tex",
@@ -135,7 +136,7 @@ reporte.agregar_subcapitulo(
     titulo="Supervisión de recolección de datos",
     titulo_grafico="",
     descripcion_grafico="",
-    descripcion="",
+    descripcion=dummy_text,
     fuente="INE",
     tipo_grafico="diagrama_tikz",
     data="diagramas/dgrm_ipc_04.tex",
@@ -191,8 +192,8 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.ipc_usa()
 reporte.agregar_subcapitulo(
-    titulo="Índice de Precios al Consumidor de EE.UU.",
-    titulo_grafico="Variación interanual del IPC de Estados Unidos de América",
+    titulo="Ritmo inflacionario en EE.UU.",
+    titulo_grafico="Ritmo inflacionario de Estados Unidos de América",
     descripcion_grafico="Estados Unidos de América, serie histórica, en porcentaje",
     descripcion=subcap_data[1],
     fuente="FRED",
@@ -202,8 +203,8 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.ipc_mex()
 reporte.agregar_subcapitulo(
-    titulo="Índice de Precios al Consumidor de México",
-    titulo_grafico="Variación interanual del IPC de México",
+    titulo="Ritmo inflacionario en México",
+    titulo_grafico="Ritmo inflacionario de México",
     descripcion_grafico="Estados Unidos Mexicanos, serie histórica, en porcentaje",
     descripcion=subcap_data[1],
     fuente="FRED",
@@ -229,8 +230,8 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.serie_inflacion(0, 'interanual')
 reporte.agregar_subcapitulo(
-    titulo="Evolución del cambio anual del IPC (Ritmo Inflacionario)",
-    titulo_grafico="Variación interanual del IPC",
+    titulo="Evolución del ritmo inflacionario",
+    titulo_grafico="Ritmo inflacionario",
     descripcion_grafico="República de Guatemala, serie histórica, en porcentaje",
     descripcion=subcap_data[1],
     fuente="INE",
@@ -317,8 +318,8 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.serie_historica_mensual_inflacion(0, 'interanual')
 reporte.agregar_subcapitulo(
-    titulo="Evolución de la variación interanual del IPC",
-    titulo_grafico="Variación interanual del IPC",
+    titulo="Evolución del ritmo inflacionario",
+    titulo_grafico="Ritmo inflacionario",
     descripcion_grafico="República de Guatemala, serie histórica, en porcentaje",
     descripcion=subcap_data[1],
     fuente="INE",
@@ -340,7 +341,7 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.inflacion_interanual_regiones()
 reporte.agregar_subcapitulo(
-    titulo="Mapa de la variación interanual de los números indices",
+    titulo="Mapa del ritmo inflacionario",
     titulo_grafico="Ritmo inflacionario",
     descripcion_grafico=f"República de Guatemala, {fecha}, adimensional",
     descripcion=subcap_data[1],
@@ -378,8 +379,8 @@ for RegCod in range(1, 9):
     )
     subcap_data = datos.serie_inflacion(RegCod, 'interanual', nivel=f'en la región {region[RegCod]}')
     reporte.agregar_subcapitulo(
-        titulo=f"Evolución de la variación interanual del índice en la región {region[RegCod]}",
-        titulo_grafico="Variación interanual del índice",
+        titulo=f"Evolución del ritmo inflacionario en la región {region[RegCod]}",
+        titulo_grafico="Ritmo inflacionario",
         descripcion_grafico=f"Región {region[RegCod]}, serie histórica, en porcentaje",
         descripcion=subcap_data[1],
         fuente="INE",
