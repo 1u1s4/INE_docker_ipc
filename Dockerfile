@@ -43,7 +43,9 @@ COPY key.key /app/
 COPY data/db_ipc /app/db_b
 COPY data/diagramas_ipc /app/diagramas
 COPY data/*.tex /app/
+COPY data/*.xlsx /app/
 
+RUN pip3 install --upgrade setuptools wheel
 # Instala paquetes Python específicos desde repositorios de GitHub
 ENV GITHUB_TOKEN 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
 RUN pip3 install \

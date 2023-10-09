@@ -2,18 +2,20 @@ from utilsjo import mes_by_ordinal
 from INEipc import DatosIPC
 from INEreporte import Reporte
 
-fecha = f"{mes_by_ordinal(8, abreviado=False).capitalize()} {2023}"
-datos = DatosIPC(2023, 8, dbBackup=1)
+mes_datos = 9
+anio = 2023
+
+fecha = f"{mes_by_ordinal(mes_datos, abreviado=False).capitalize()} {anio}"
+datos = DatosIPC(anio, mes_datos, dbBackup=1)
 
 reporte = Reporte(
     nombre_reporte="Índice de Precios al Consumidor",
-    anio=2023,
-    mes=9,
-    periodo="Agosto 2023"
+    anio=anio,
+    mes=mes_datos+1,
+    periodo=fecha
 )
 
 subcap_data_imputacion = ([
-  ('Ago-2022', 3.0303989867004435),
   ('Sep-2022', 4.4351846566584845),
   ('Oct-2022', 5.289202323100628),
   ('Nov-2022', 3.286537608984779),
@@ -25,8 +27,9 @@ subcap_data_imputacion = ([
   ('May-2023', 1.22),
   ('Jun-2023', 1.10),
   ('Jul-2023', 1.71),
-  ('Ago-2023', 1.24)],
- 'El porcentaje de precios imputados en agosto 2023 es de 1.24%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.29% y el menor se encuentra en el mes de junio 2023 con una cantidad de 1.10%.')
+  ('Ago-2023', 1.24),
+  ('Sep-2023', 1.65)],
+ 'El porcentaje de precios imputados en  sepriembre 2023 es de 1.65%. El mayor porcentaje de imputaciones fue en el mes de octubre 2022 con una cantidad de 5.29% y el menor se encuentra en el mes de junio 2023 con una cantidad de 1.10%.')
 
 # capitulo 1
 reporte.presentacion(datos.introduccion())
@@ -146,7 +149,22 @@ reporte.agregar_subcapitulo(
 reporte.agregar_capitulo(
     titulo="Variables exógenas"
 )
-subcap_data = datos.indice_precio_alimentos()
+
+#subcap_data = datos.indice_precio_alimentos()
+subcap_data = ([('Ago-2022', 137.57955105100112),
+  ('Sep-2022', 136.04175202121962),
+  ('Oct-2022', 135.37847253330085),
+  ('Nov-2022', 134.7375273257023),
+  ('Dic-2022', 131.79457812874588),
+  ('Ene-2023', 130.20155075969072),
+  ('Feb-2023', 129.8141529176985),
+  ('Mar-2023', 127.00380138970077),
+  ('Abr-2023', 127.72177293775783),
+  ('May-2023', 124.14497718909877),
+  ('Jun-2023', 122.67510555806449),
+  ('Jul-2023', 124.01295381269875),
+  ('Ago-2023', 121.39138849777402)],
+ 'El índice de precios de los alimentos\\footnote{El índice de precios de los alimentos de la FAO es una medida de la variación mensual de los precios internacionales de una canasta de productos alimenticios. Consiste en el promedio de los índices de precios de cinco grupos de productos básicos, ponderado con las cuotas medias de exportación de cada uno de los grupos para 2002-2004.} de la FAO\\footnote{Organización de las Naciones Unidas para la Alimentación y la Agricultura.} registró en agosto 2023 un índice de 121.39, lo que representa una variación de -11.77% respecto a agosto 2022 y de -2.11% respecto a julio 2023.')
 reporte.agregar_subcapitulo(
     titulo="Precio internacional de los alimentos",
     titulo_grafico="Índice de precios de los alimentos de la FAO",
@@ -157,6 +175,7 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
+
 subcap_data = datos.petroleo()
 reporte.agregar_subcapitulo(
     titulo="Precio del pretróleo",
@@ -168,7 +187,21 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
-subcap_data = datos.cambio_quetzal()
+#subcap_data = datos.cambio_quetzal()
+subcap_data = ([('Sep-2022', 7.8004169999999995),
+  ('Oct-2022', 7.865183548387096),
+  ('Nov-2022', 7.813936),
+  ('Dic-2022', 7.868113548387095),
+  ('Ene-2023', 7.848967741935484),
+  ('Feb-2023', 7.831650357142857),
+  ('Mar-2023', 7.804977096774192),
+  ('Abr-2023', 7.799317333333334),
+  ('May-2023', 7.809260645161289),
+  ('Jun-2023', 7.838317999999998),
+  ('Jul-2023', 7.849883225806452),
+  ('Ago-2023', 7.859662258064516),
+  ('Sep-2023', 7.868444444444446)],
+ 'El tipo de cambio de referencia\\footnote{El tipo de cambio de referencia lo calcula el Banco de Guatemala con la información que las instituciones que constituyen el Mercado Institucional de Divisas le proporcionan, relativa al monto de divisas compradas y al monto de divisas vendidas y sus respectivas equivalencias en moneda nacional.} del quetzal respecto al dólar de los Estados Unidos de América, registró en septiembre 2023 un tipo de cambio promedio de Q7.87 por US$1.00, lo que representa una variación de 0.87% respecto a septiembre 2022 y de 0.11% respecto a agosto 2023.')
 reporte.agregar_subcapitulo(
     titulo="Cambio del quetzal",
     titulo_grafico="Tipo de cambio nominal promedio",
@@ -179,7 +212,21 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
-subcap_data = datos.tasa_interes()
+#subcap_data = datos.tasa_interes()
+subcap_data = ([('Sep-2022', 11.940000000000001),
+  ('Oct-2022', 11.84),
+  ('Nov-2022', 11.83),
+  ('Dic-2022', 11.83),
+  ('Ene-2023', 11.89),
+  ('Feb-2023', 11.940000000000001),
+  ('Mar-2023', 11.93),
+  ('Abr-2023', 11.93),
+  ('May-2023', 11.98),
+  ('Jun-2023', 11.98),
+  ('Jul-2023', 11.98),
+  ('Ago-2023', 11.959999999999999),
+  ('Sep-2023', 11.95)],
+ 'El promedio ponderado preliminar de la tasa de interés activa\\footnote{Es el porcentaje que las instituciones bancarias, de acuerdo con las condiciones de mercado y las disposiciones del banco central, cobran por los diferentes tipos de servicios de crédito a los usuarios de los mismos.} en moneda nacional se ubicó en septiembre 2023 en 11.95%, representa un aumento de 0.01 puntos porcentuales respecto a septiembre 2022 y una disminución de 0.01 puntos porcentuales respecto a agosto 2023.')
 reporte.agregar_subcapitulo(
     titulo="Tasa de interés",
     titulo_grafico="Tasas de interés activa bancaria",
@@ -443,7 +490,7 @@ for RegCod in range(1, 9):
         data=subcap_data[0],
         opciones_grafico={"precision":2}
     )
-'''
+
 #capitulo 4
 reporte.agregar_capitulo(
     titulo="Anexos",
@@ -464,6 +511,6 @@ for Gba in datos_gba:
         data=datosGba,
         opciones_grafico={"precision":2, "Q4Etiquetas":True}
     )
-'''
+
 reporte.set_formulas('formulas_ipc.tex')
 reporte.crear_reporte()
