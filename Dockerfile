@@ -9,6 +9,8 @@ COPY fuentes/*.ttf /usr/share/fonts/
 
 # Actualiza lista de paquetes e instala dependencias
 RUN apt-get update && apt-get install -y \
+    libcairo2-dev \
+    pkg-config \
     python3.11 \
     python3-pip \
     openjdk-8-jdk \
@@ -46,7 +48,10 @@ COPY data/*.tex /app/
 COPY data/*.xlsx /app/
 
 RUN pip3 install --upgrade setuptools wheel
-RUN pip3 uninstall -y setuptools && pip3 install setuptools
+# Copia el archivo requirements.txt al directorio de trabajo (por ejemplo, /app/)
+COPY requirements.txt /app/
+# Instala las dependencias de Python
+RUN pip3 install --upgrade pip setuptools wheel && pip3 install -r /app/requirements.txt
 # Instala paquetes Python específicos desde repositorios de GitHub
 ENV GITHUB_TOKEN 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
 RUN pip3 install \
