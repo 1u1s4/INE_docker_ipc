@@ -46,6 +46,7 @@ COPY data/*.tex /app/
 COPY data/*.xlsx /app/
 
 RUN pip3 install --upgrade setuptools wheel
+RUN pip3 uninstall -y setuptools && pip3 install setuptools
 # Instala paquetes Python específicos desde repositorios de GitHub
 ENV GITHUB_TOKEN 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
 RUN pip3 install \
