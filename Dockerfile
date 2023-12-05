@@ -53,12 +53,11 @@ COPY requirements.txt /app/
 # Instala las dependencias de Python
 RUN pip3 install --upgrade pip setuptools wheel && pip3 install -r /app/requirements.txt
 # Instala paquetes Python específicos desde repositorios de GitHub
-ENV GITHUB_TOKEN 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
+# ENV GITHUB_TOKEN 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
 RUN pip3 install \
     --no-cache-dir \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEipc.git \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEcba.git \
-    git+https://${GITHUB_TOKEN}@github.com/1u1s4/INEreporte.git
+    git+https://github.com/1u1s4/INEipc.git \
+    git+https://github.com/1u1s4/INEreporte.git
 
 # Copia archivos que cambian más frecuentemente
 COPY scrips/ipc.py /app/main.py
