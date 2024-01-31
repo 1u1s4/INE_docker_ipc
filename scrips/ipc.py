@@ -178,7 +178,7 @@ reporte.agregar_subcapitulo(
 
 subcap_data = datos.petroleo()
 reporte.agregar_subcapitulo(
-    titulo="Precio del pretróleo",
+    titulo="Precio del petróleo",
     titulo_grafico="Precio promedio mensual del barril del petróleo",
     descripcion_grafico="Indicador internacional, serie histórica, en dólares por barril",
     descripcion=subcap_data[1],
