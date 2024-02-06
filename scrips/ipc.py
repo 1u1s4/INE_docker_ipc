@@ -321,7 +321,7 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.incidencias_gba(0, True)
 reporte.agregar_subcapitulo(
-    titulo="Gastos básicos con mayor impacto positivo en la variación mensual",
+    titulo="Productos con mayor impacto positivo en la variación mensual",
     titulo_grafico="Gastos básicos con mayor incidencia positiva",
     descripcion_grafico=f"República de Guatemala, {fecha}, en porcentaje",
     descripcion=subcap_data[1],
@@ -332,7 +332,7 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.incidencias_gba(0, False)
 reporte.agregar_subcapitulo(
-    titulo="Gastos básicos con mayor impacto negativo en la variación mensual",
+    titulo="Productos con mayor impacto negativo en la variación mensual",
     titulo_grafico="Gastos básicos con mayor incidencia negativa",
     descripcion_grafico=f"República de Guatemala, {fecha}, en porcentaje",
     descripcion=subcap_data[1],
