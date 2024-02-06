@@ -310,7 +310,7 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.incidencias_divisiones(0)
 reporte.agregar_subcapitulo(
-    titulo="Incidencias mensuales por división de gasto básico",
+    titulo="Incidencias mensuales por división",
     titulo_grafico="Incidencias mensuales",
     descripcion_grafico=f"República de Guatemala, {fecha}, en porcentaje",
     descripcion=subcap_data[1],
