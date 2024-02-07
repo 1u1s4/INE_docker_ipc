@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
 RUN /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64 \
     && fc-cache -f -v \
     && R CMD javareconf \
-    && R -e "install.packages('devtools')" \
+    && R -e "install.packages(c('usethis', 'pkgdown', 'devtools'))" \
     && R -e "devtools::install_version('rJava', version = '1.0.6', repos='http://cran.rstudio.com/')" \
     && R -e "devtools::install_github('yihui/tikzDevice', ref = 'v0.12.4')" \
     && R -e "devtools::install_github('1u1s4/funcionesINE@gpt', upgrade='never', INSTALL_opts = '--no-test-load')"
