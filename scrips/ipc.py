@@ -502,7 +502,7 @@ for Gba in datos_gba:
     datosGba = Gba[1]
     desc = Gba[2]
     reporte.agregar_subcapitulo(
-        titulo=f"Evolución del índice del gasto básico {nombre}",
+        titulo=f"Evolución del índice del producto {nombre}",
         titulo_grafico="IPC, base diciembre del 2010",
         descripcion_grafico="República de Guatemala, serie histórica, adimensional",
         descripcion=desc,
