@@ -259,6 +259,27 @@ reporte.agregar_subcapitulo(
     data=subcap_data[0],
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
+#aqui se ingresan los datos que se generan de la funcion inflacion_CA_RD_MEX
+subcap_data = ([('País', 'Nov-2022', 'Nov-2023'),
+  ('Guatemala', 9.166993592258411, 4.300431241015801),
+  ('El Salvador', 7.32425159771275, 2.10765494006111),
+  ('Honduras', 10.438356164383578, 5.035971223021574),
+  ('Nicaragua', 11.378901619913062, 5.6438453352252616),
+  ('Costa Rica', 8.256248963326529, -1.6533381256177537),
+  ('Republica Dominicana', 7.5805275421090945, 4.000991981483004),
+  ('Panamá', 1.52294331607008, 1.949860724233976),
+  ('México', 7.799185517264973, 4.285714285714293)],
+ 'Para el mes de noviembre 2023, en Centro América, República Dominicana y México, Nicaragua presentó el mayor ritmo inflacionario de 5.64%, mientras que Costa Rica registró el ritmo inflacionario más bajo con un nivel de -1.65%.')
+reporte.agregar_subcapitulo(
+    titulo="Inflación en Centro América, República Dominicana y México",
+    titulo_grafico="Tasa de variación interanual del IPC de los países Centroamericanos, República Dominicana y México",
+    descripcion_grafico="Centro América, República Dominicana y México, meses seleccionados, en porcentaje",
+    descripcion=subcap_data[1],
+    fuente="INE",
+    tipo_grafico="tabla",
+    data=subcap_data[0],
+    opciones_grafico={"precision":2}
+)
 
 # capitulo 3
 reporte.agregar_capitulo(
