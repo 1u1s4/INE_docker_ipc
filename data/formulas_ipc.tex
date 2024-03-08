@@ -1,11 +1,30 @@
 {\setlength{\parindent}{0cm} 
 \newcommand{\IPC}[1]{\text{IPC}_{#1}}
-\textbf{Índice de Precios al Consumidor}\\
-El Índice de Precios al Consumidor del mes de estudio $\IPC{t}$ se obtiene mediante la fórmula siguiente:
+\textbf{Cálculo de Índices de producto}\\
+Para realizar el cálculo del índice de cada producto se utiliza la ecuación
 \begin{align*}
-	\IPC{t} = \left(\sum_{i=1}^{n} w_i \frac{\IPC{t,i}}{\IPC{t-1,i}} \right)
+	I_{k}^{t} =  \prod \left( \frac{p_{i}^{t}}{p_{i}^{t-1}} \right)^{\frac{1}{n}} \times I_{k}^{t-1}
 \end{align*}
-donde $w_i$ es el peso relativo del bien $i$ respecto al total del gasto reportado por la ENIGFAM, $\IPC{t,i}$ es el precio promedio del bien $i$ en mes de estudio, $\IPC{t-1,i}$, es el Índice de Precios al Consumidor del mes anterior, y $n$ es el número de bienes y servicios que componen la canasta de consumo. En la canasta actual, $n$ es igual a 441.\\
+donde
+\begin{itemize}
+    \item[]$I_{k}^{t}$ = Índice actual del producto $k$ del período $t$
+    \item[]$p_{i}^{t}$ = Precio de la variedad $i$ del período $t$ (actual)
+    \item[]$p_{i}^{t-1}$ = Precio de la variedad $i$ del período $t-1$ (anterior)
+    \item[]$I_{k}^{t-1}$ = Ínidce del producto k del período $t-1$ (anterior)
+\end{itemize}
+
+\textbf{Cálculo de Índices agregados}\\
+Para realizar el cálculo de los índices de gregados (niveles superiores) se utiliza la ecuación
+\begin{align*}
+	I_{j}^{t} = \frac{ \sum_{k=1}^{k} w_{k} \times I_{k}^{t}}{w_{j}}
+\end{align*}
+donde
+
+$I_{j}^{t}$ = Índice actual del agregado $j$ del periodo $t$\\
+$k$ = número de productos que integran el agregado $j$\\
+$w_{k}$ = Ponderación del producto $k$\\
+$ I_{k}^{t}$ = índice actual del producto $k$ del período $t$ (actual)\\
+$w_{j}$ = Sumatoria de $w_{k}$ (Ponderación del agregado $j$)\\
 
 \textbf{Variación Intermensual}\\
 Se obtiene relacionando el Índice de Precios al Consumidor del mes de estudio $\IPC{t}$ con el correspondiente al mes anterior $\IPC{t-1}$, mediante la fórmula siguiente:
