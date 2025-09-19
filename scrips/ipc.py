@@ -2,7 +2,7 @@ from utilsjo import mes_by_ordinal
 from INEipc import DatosIPC
 from INEreporte import Reporte
 
-mes_datos = 4
+mes_datos = 8
 anio = 2025
 
 if (anio == 2024):
@@ -20,21 +20,23 @@ reporte = Reporte(
     periodo=fecha
 )
 
-subcap_data_imputacion = ([
-    ('Abr-2024', 5.79),
-    ('May-2024', 4.87),
-    ('Jun-2024', 5.12),
-    ('Jul-2024', 6.09),
-    ('Ago-2024', 6.10),
-    ('Sep-2024', 5.94),
-    ('Oct-2024', 5.40),
-    ('Nov-2024', 8.27),
-    ('Dic-2024', 4.21),
-    ('Ene-2025', 4.21),
-    ('Feb-2025', 3.62),
-    ('Mar-2025', 3.27),
-    ('Abr-2025', 3.04)],
-    'El porcentaje de precios imputados en Abril 2025 es de 3.04%. El mayor porcentaje de imputaciones fue en el mes de Noviembre 2024 con una cantidad de 8.27% y el menor se encuentra en el mes de Abril 2025 con una cantidad de 3.04%.')
+subcap_data_imputacion = (
+    [
+        ('Ago-2024', 6.10),
+        ('Sep-2024', 5.94),
+        ('Oct-2024', 5.40),
+        ('Nov-2024', 8.27),
+        ('Dic-2024', 4.21),
+        ('Ene-2025', 4.21),
+        ('Feb-2025', 3.62),
+        ('Mar-2025', 3.27),
+        ('Abr-2025', 3.04),
+        ('May-2025', 3.12),
+        ('Jun-2025', 3.10),
+        ('Jul-2025', 3.02),
+        ('Ago-2025', 2.51)
+    ],
+    'El porcentaje de precios imputados en Agosto 2025 es de 2.51%. El mayor porcentaje de imputaciones fue en el mes de noviembre 2024 con una cantidad de 8.27% y el menor se encuentra en el mes de Agosto 2025 con una cantidad de 2.51%.')
 
 # capitulo 1
 reporte.presentacion(datos.introduccion())
@@ -42,21 +44,23 @@ reporte.agregar_capitulo(
     titulo="Detalle del operativo de campo del IPC"
 )
 #subcap_data = datos.serie_fuentes()
-subcap_data = ([
-    ('Abr-2024', 13331),
-    ('May-2024', 14161),
-    ('Jun-2024', 14755),
-    ('Jul-2024', 15136),
-    ('Ago-2024', 15694),
-    ('Sep-2024', 15816),
-    ('Oct-2024', 16177),
-    ('Nov-2024', 16346),
-    ('Dic-2024', 16790),
-    ('Ene-2025', 17016),
-    ('Feb-2025', 17240),
-    ('Mar-2025', 17424),
-    ('Abr-2025', 17627)],
-    'En el período actual, se consultaron un total de 17,627 fuentes. Al revisar los registros históricos, se identificó un máximo en el mes de abril 2025, con 17,627 y un mínimo en el mes de abril 2024, con 13,331.')
+subcap_data = (
+    [
+        ('Ago-2024', 15694),
+        ('Sep-2024', 15816),
+        ('Oct-2024', 16177),
+        ('Nov-2024', 16346),
+        ('Dic-2024', 16790),
+        ('Ene-2025', 17016),
+        ('Feb-2025', 17240),
+        ('Mar-2025', 17424),
+        ('Abr-2025', 17627),
+        ('May-2025', 17712),
+        ('Jun-2025', 17904),
+        ('Jul-2025', 18046),
+        ('Ago-2025', 18362)
+    ],
+    'En el período actual, se consultaron un total de 18,362 fuentes. Al revisar los registros históricos, se identificó un máximo en el mes de agosto 2025, con 18,362 y un mínimo en el mes de agosto 2024, con 15,694.')
 reporte.agregar_subcapitulo(
     titulo="Cobertura de fuentes",
     titulo_grafico="Histórico de cobertura de fuentes",
@@ -68,21 +72,23 @@ reporte.agregar_subcapitulo(
     opciones_grafico=dict(Q4Etiquetas=True)
 )
 #subcap_data = datos.serie_precios()
-subcap_data = ([
-    ('Abr-2024', 65179),
-    ('May-2024', 71320),
-    ('Jun-2024', 76094),
-    ('Jul-2024', 79461),
-    ('Ago-2024', 82755),
-    ('Sep-2024', 85736),
-    ('Oct-2024', 87542),
-    ('Nov-2024', 89670),
-    ('Dic-2024', 86629),
-    ('Ene-2025', 88097),
-    ('Feb-2025', 90248),
-    ('Mar-2025', 91795),
-    ('Abr-2025', 93189)],
-    'Durante el mes de abril 2025, se recopilaron un total de 93,189 precios. La máxima incidencia se registró en el mes de abril 2025 con 93,189, en contraste con la cifra mínima evidenciada en abril 2024, la cual totalizó 65,179 observaciones.')
+subcap_data = (
+    [
+        ('Ago-2024', 82755),
+        ('Sep-2024', 85736),
+        ('Oct-2024', 87542),
+        ('Nov-2024', 89670),
+        ('Dic-2024', 86629),
+        ('Ene-2025', 88097),
+        ('Feb-2025', 90248),
+        ('Mar-2025', 91795),
+        ('Abr-2025', 93189),
+        ('May-2025', 93748),
+        ('Jun-2025', 95049),
+        ('Jul-2025', 96389),
+        ('Ago-2025', 99548)
+    ],
+    'Durante el mes de agosto 2025, se recopilaron un total de 99,548 precios. La máxima incidencia se registró en el mes de agosto 2025 con 99,548, en contraste con la cifra mínima evidenciada en agosto 2024, la cual totalizó 82,755 observaciones.')
 reporte.agregar_subcapitulo(
     titulo="Cobertura de precios",
     titulo_grafico="Histórico de cobertura de precios",
@@ -106,8 +112,8 @@ reporte.agregar_subcapitulo(
 )
 subcap_data = datos.desagregacion_fuentes()
 reporte.agregar_subcapitulo(
-    titulo="Desagregación de fuentes",
-    titulo_grafico="Desagregación de fuentes por tipo",
+    titulo="Desagregación de fuentes principales por tipología",
+    titulo_grafico="Desagregación de fuentes principales por tipología",
     descripcion_grafico=f"República de Guatemala, {fecha}, porcentaje",
     descripcion=subcap_data[1],
     fuente="INE",
@@ -130,7 +136,7 @@ reporte.agregar_subcapitulo(
 subcap_data = datos.cobertura_precios()
 reporte.agregar_subcapitulo(
     titulo="Mapa de cobertura de precios",
-    titulo_grafico="Cantidad de precios diligenciadas",
+    titulo_grafico="Cantidad de precios diligenciados",
     descripcion_grafico=f"República de Guatemala, {fecha}, adimensional",
     descripcion=subcap_data[1],
     fuente="INE",
@@ -186,20 +192,22 @@ reporte.agregar_capitulo(
 )
 
 #subcap_data = datos.indice_precio_alimentos()
-subcap_data = ([('Abr-2024', 119.249816520776),
-    ('May-2024', 120.489158118856),
-    ('Jun-2024', 120.99067025564),
-    ('Jul-2024', 120.88184059069),
+subcap_data = ([
     ('Ago-2024', 121.668127420186),
     ('Sep-2024', 124.589672840668),
     ('Oct-2024', 126.939829507029),
     ('Nov-2024', 127.711988303031),
     ('Dic-2024', 127.409588438044),
-    ('Ene-2025', 124.705781876722),
-    ('Feb-2025', 126.939829507029),
-    ('Mar-2025', 127.069597012416),
-    ('Abr-2025', 128.286892336038)],
-    'En abril 2025, el índice de precios de los alimentos\\footnote{El índice de precios de los alimentos de la FAO es una medida de la variación mensual de los precios internacionales de una canasta de productos alimenticios. Consiste en el promedio de los índices de precios de cinco grupos de productos, ponderado con las cuotas medias de exportación de cada uno de los grupos para 2002-2004.} de la FAO\\footnote{Organización de las Naciones Unidas para la Alimentación y la Agricultura.} se situó en 128.29 puntos, lo que supone una variación de 7.58% respecto a abril 2024, y del 0.96% respecto a marzo 2025.')
+    ('Ene-2025', 124.652807265969),
+    ('Feb-2025', 126.598550827044),
+    ('Mar-2025', 127.232169620689),
+    ('Abr-2025', 128.165217228313),
+    ('May-2025', 127.075948017077),
+    ('Jun-2025', 128.087409405444),
+    ('Jul-2025', 129.968019775931),
+    ('Ago-2025', 130.110594347636)
+    ],
+    'En agosto 2025, el índice de precios de los alimentos\\footnote{El índice de precios de los alimentos de la FAO es una medida de la variación mensual de los precios internacionales de una canasta de productos alimenticios. Consiste en el promedio de los índices de precios de cinco grupos de productos, ponderado con las cuotas medias de exportación de cada uno de los grupos para 2002-2004.} de la FAO\\footnote{Organización de las Naciones Unidas para la Alimentación y la Agricultura.} se situó en 130.11 puntos, lo que supone una variación de 6.94% respecto a agosto 2024, y del 0.11% respecto a julio 2025.')
 reporte.agregar_subcapitulo(
     titulo="Precio internacional de los alimentos",
     titulo_grafico="Índice de precios de los alimentos de la FAO",
@@ -273,21 +281,23 @@ reporte.agregar_subcapitulo(
     opciones_grafico={"precision":2, "Q4Etiquetas":True}
 )
 #subcap_data = datos.ipc_mex()
-subcap_data = ([
-    ('Mar-2024', 4.44),
-    ('Abr-2024', 4.63),
-    ('May-2024', 4.68),
-    ('Jun-2024', 4.98),
-    ('Jul-2024', 5.59),
-    ('Ago-2024', 5.03),
-    ('Sep-2024', 4.60),
-    ('Oct-2024', 4.77),
-    ('Nov-2024', 4.58),
-    ('Dic-2024', 4.19),
-    ('Ene-2025', 3.58),
-    ('Feb-2025', 3.78),
-    ('Mar-2025', 3.80)],
-    'Durante el período comprendido entre marzo 2024 y marzo 2025, México\\footnote{Para mayor información sobre el índice de precios al consumidor en México, visite \\url{http://www.inegi.org.mx}.} experimentó un cambio en su ritmo inflacionario, de un 4.44% a un 3.80%, lo que representa una desaceleración en 0.64 puntos.')
+subcap_data = (
+    [
+        ('Jul-2024', 5.59),
+        ('Ago-2024', 5.03),
+        ('Sep-2024', 4.60),
+        ('Oct-2024', 4.77),
+        ('Nov-2024', 4.58),
+        ('Dic-2024', 4.19),
+        ('Ene-2025', 3.58),
+        ('Feb-2025', 3.78),
+        ('Mar-2025', 3.80),
+        ('Abr-2025', 3.93),
+        ('May-2025', 4.42),
+        ('Jun-2025', 4.32),
+        ('Jul-2025', 3.53)
+    ],
+    'Durante el período comprendido entre julio 2024 y julio 2025, México\\footnote{Para mayor información sobre el índice de precios al consumidor en México, visite \\url{http://www.inegi.org.mx}.} experimentó un cambio en su ritmo inflacionario, de un 5.59% a un 3.53%, lo que representa una desaceleración en 2.06 puntos.')
 
 reporte.agregar_subcapitulo(
     titulo="Ritmo inflacionario en México",
@@ -397,7 +407,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="barra",
     data=subcap_data[0],
-    opciones_grafico={"precision":2}
+    opciones_grafico={"precision":4}
 )
 subcap_data = datos.incidencias_gba(0, True)
 reporte.agregar_subcapitulo(
@@ -408,7 +418,7 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="barra",
     data=subcap_data[0],
-    opciones_grafico={"precision":2}
+    opciones_grafico={"precision":4}
 )
 subcap_data = datos.incidencias_gba(0, False)
 reporte.agregar_subcapitulo(
@@ -419,31 +429,37 @@ reporte.agregar_subcapitulo(
     fuente="INE",
     tipo_grafico="barra",
     data=subcap_data[0],
-    opciones_grafico={"precision":2}
+    opciones_grafico={"precision":4}
 )
 #subcap_data = datos.serie_poder_adquisitivo(0)
-subcap_data = ([
-#    ('Dic-2023', 1),
-#    ('Ene-2024', 0.999736009709276),
-#    ('Feb-2024', 0.998343159675634),
-#    ('Mar-2024', 0.995271831777801),
-    ('Abr-2024', 0.992333539940821),
-    ('May-2024', 0.9920509304358347),
-    ('Jun-2024', 0.992050930435833),
-    ('Jul-2024', 0.982038033350994),
-    ('Ago-2024', 0.9826504082812246),
-    ('Sep-2024', 0.986369601096231),
-    ('Oct-2024', 0.98313472989565),
-    ('Nov-2024', 0.98480400650177),
-    ('Dic-2024', 0.983256565319603),
-    ('Ene-2025', 0.978350496328685),
-    ('Feb-2025', 0.9807881766776107),
-    ('Mar-2025', 0.9798549408432344),
-    ('Abr-2025', 0.9779525333020441)],
-    'El quetzal experimentó una pérdida de 0.02 centavos en su poder adquisitivo en comparación con diciembre de 2023, lo que significa que un quetzal de abril de 2025 equivale a 0.98 centavos en diciembre 2023. En la base año 2024 se continua usando el mes de diciembre 2023 como referencia para el poder adquisitivo.')
+subcap_data = (
+    [
+#       ('Dic-2023', 1),
+#       ('Ene-2024', 0.999736009709276),
+#       ('Feb-2024', 0.998343159675634),
+#       ('Mar-2024', 0.995271831777801),
+#       ('Abr-2024', 0.992333539940821),
+#       ('May-2024', 0.9920509304358347),
+#       ('Jun-2024', 0.992050930435833),
+#        ('Jul-2024', 0.982038033350994),
+        ('Ago-2024', 0.9826504082812246),
+        ('Sep-2024', 0.986369601096231),
+        ('Oct-2024', 0.98313472989565),
+        ('Nov-2024', 0.98480400650177),
+        ('Dic-2024', 0.983256565319603),
+        ('Ene-2025', 0.978350496328685),
+        ('Feb-2025', 0.9807881766776107),
+        ('Mar-2025', 0.9798549408432344),
+        ('Abr-2025', 0.9779525333020441),
+        ('May-2025', 0.9755640844162845),
+        ('Jun-2025', 0.97309897948052),
+        ('Jul-2025', 0.9707165987599207),
+        ('Ago-2025', 0.9712800688627372)
+    ],
+    'El quetzal experimentó una pérdida de 0.03 centavos en su poder adquisitivo en comparación con diciembre de 2023\\footnote{En la base año 2024 se continua usando el mes de diciembre 2023 como referencia para el poder adquisitivo.}, lo que significa que un quetzal en agosto de 2025 equivale a 0.97 centavos en diciembre 2023.')
 
 reporte.agregar_subcapitulo(
-    titulo="Poder aquisitivo del Quetzal",
+    titulo="Poder adquisitivo del Quetzal",
     titulo_grafico="Poder adquisitivo del quetzal",
     descripcion_grafico="República de Guatemala, serie histórica, adimensional",
     descripcion=subcap_data[1],
@@ -566,7 +582,7 @@ for RegCod in range(1, 9):
         fuente="INE",
         tipo_grafico="barra",
         data=subcap_data[0],
-        opciones_grafico={"precision":2}
+        opciones_grafico={"precision":4}
     )
     subcap_data = datos.incidencias_gba(RegCod, True)
     reporte.agregar_subcapitulo(
@@ -577,7 +593,7 @@ for RegCod in range(1, 9):
         fuente="INE",
         tipo_grafico="barra",
         data=subcap_data[0],
-        opciones_grafico={"precision":2}
+        opciones_grafico={"precision":4}
     )
     subcap_data = datos.incidencias_gba(RegCod, False)
     reporte.agregar_subcapitulo(
@@ -588,7 +604,7 @@ for RegCod in range(1, 9):
         fuente="INE",
         tipo_grafico="barra",
         data=subcap_data[0],
-        opciones_grafico={"precision":2}
+        opciones_grafico={"precision":4}
     )
 
 #capitulo 4
