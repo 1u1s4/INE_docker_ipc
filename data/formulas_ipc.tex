@@ -38,16 +38,16 @@ Se obtiene relacionando el Índice de Precios al Consumidor del mes de estudio $
 	\text{Variación intermensual} = \left( \frac{\IPC{t}}{\IPC{t-12}} \right) \times 100
 \end{align*}
 
-\textbf{Incidencia o impacto}\\
-La incidencia o impacto del gasto básico, división de gasto o región $x$, en el mes actual, se obtiene mediante la fórmula:
-\begin{align*}
-	\Delta_{t}^{x} = w_x \left( \frac{I_t^x - I_{t-1}^x}{\IPC{t-1}} \right)
-\end{align*}
-donde $I_t^x$ es el número índice del gasto básico, división de gasto o región $x$ en el periodo $t$, $w_x$ es la ponderación del gasto básico, división de gasto o región $x$ dentro de la canasta familiar de consumo. $\IPC{t-1}$ es el Índice de Precios al Consumidor del mes anterior.\\
-
 \textbf{Poder adquisitivo de la moneda}\\
 El poder adquisitivo de la moneda en el mes de estudio respecto del mes base, se obtiene mediante la fórmula:
 \begin{align*}
-	\text{PA}_t = \frac{1}{\IPC{t}} \times 100
+	\text{PA}_t = \frac{\IPC{b}}{\IPC{t}}
 \end{align*}
+
+\textbf{Incidencia o impacto}\\
+La incidencia o impacto del producto, división de gasto o región $x$, en el mes actual, se obtiene mediante la fórmula:
+\begin{align*}
+	\Delta_{t}^{x} = w_x \left( \frac{I_t^x - I_{t-1}^x}{\IPC{t-1}} \right)
+\end{align*}
+donde $I_t^x$ es el número índice del producto, división de gasto o región $x$ en el periodo $t$, $w_x$ es la ponderación del producto, división de gasto o región $x$ dentro de la canasta familiar de consumo. $\IPC{t-1}$ es el Índice de Precios al Consumidor del mes anterior.\\
 }
